@@ -30,7 +30,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [github repo](https://github.com/cornelldev/Loopstudios)
-- Live Site URL: [github pages](https://github.com/cornelldev/Loopstudios)
+- Live Site URL: [github pages](https://cornelldev.github.io/Loopstudios/)
 
 
 ### Built with
