@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Value Calculator</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        label, input { display: block; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h2>Order Value Calculator</h2>
+    
+    <label>Entry Price:
+        <input type="number" id="entry" step="any">
+    </label>
+
+    <label>Stop Loss Price:
+        <input type="number" id="stopLoss" step="any">
+    </label>
+
+    <label>Risk Amount ($):
+        <input type="number" id="risk" step="any">
+    </label>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        function calculate() {
+            let entry = parseFloat(document.getElementById('entry').value);
+            let stopLoss = parseFloat(document.getElementById('stopLoss').value);
+            let risk = parseFloat(document.getElementById('risk').value);
+
+            if (isNaN(entry) || isNaN(stopLoss) || isNaN(risk) || entry === 0) {
+                document.getElementById('result').innerText = "Please enter valid numbers.";
+                return;
+            }
+
+            let slPercent = Math.abs((100 * (entry - stopLoss)) / entry);
+            let orderValue = risk / (slPercent / 100);
+
+            document.getElementById('result').innerText = 
+                "Order Value: $" + orderValue.toFixed(2) + " (SL%: " + slPercent.toFixed(2) + "%)";
+        }
+    </script>
+</body>
+</html>
